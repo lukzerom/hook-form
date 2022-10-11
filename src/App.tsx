@@ -1,11 +1,11 @@
 import React from "react";
-
-import ExamplePart1 from "./Examples/ExamplePart1";
+import UseFieldArrayDemo from "./Examples/filipDemo/useFieldArrayDemo";
 
 function App() {
   return (
     <div className="App">
-      <ExamplePart1 />
+      {/*<ExamplePart1 />*/}
+        <UseFieldArrayDemo/>
     </div>
   );
 }
