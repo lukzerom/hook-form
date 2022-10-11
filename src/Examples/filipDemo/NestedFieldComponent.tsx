@@ -17,7 +17,7 @@ const NestedFieldComponent = (): ReactElement => {
     return (
         <>
             {nestedFieldArray
-                .map((field, index) => <NestedField key={field.id}/>)
+                .map((field, index) => <NestedField index={index} key={field.id}/>)
             }
         </>
     );
