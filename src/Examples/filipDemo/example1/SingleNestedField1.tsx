@@ -14,24 +14,23 @@ const SingleNestedField1 = (
         remove
     }: SingleNestedFieldProps): ReactElement => {
 
-    const {control, setValue, resetField} = useFormContext<FieldArrayData>();
+    const {control, setValue} = useFormContext<FieldArrayData>();
 
     const age = useWatch({
         control,
         name: `nestedField.${index}.age`,
-        defaultValue: 0
-    })
+    });
 
     const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         setValue(`nestedField.${index}.age`, Number(event.target.value));
         if (Number(event.target.value) < 18) {
-            resetField(`nestedField.${index}.orderAlcohol`)
+            setValue(`nestedField.${index}.orderAlcohol`, "NONE");
         }
-    }, [index, resetField, setValue]);
+    }, [index, setValue]);
 
     const handleRemoveClick = useCallback(() => {
         remove(index)
-    },[index, remove])
+    },[index, remove]);
 
     return (
         <>

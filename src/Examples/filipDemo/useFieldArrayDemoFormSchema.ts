@@ -32,6 +32,6 @@ export const defaultSingleNestedField: NestedField = {
     name: "",
     surname: "",
     phoneNumber: "",
-    age: 0,
+    age: 1,
     orderAlcohol: "NONE"
 }

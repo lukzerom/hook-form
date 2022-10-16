@@ -90,7 +90,7 @@ const NestedFieldComponent2 = (): ReactElement => {
                             color="success"
                             onClick={handleSwapClick}
                         >
-                            Swap object from index 0 to index 2
+                            Swap object from index {fromIndex} to index {toIndex}
                         </Button>
                     </Grid>
                     <Grid item xs={4}>
@@ -129,7 +129,7 @@ const NestedFieldComponent2 = (): ReactElement => {
                             color="success"
                             onClick={handleInsertClick}
                         >
-                            Insert Object to index ${toIndexInsert}
+                            Insert Object to index {toIndexInsert}
                         </Button>
                     </Grid>
                     <Grid item xs={10}>

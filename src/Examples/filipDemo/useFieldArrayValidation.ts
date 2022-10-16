@@ -8,6 +8,7 @@ export const UseFieldArrayValidation = yup.object({
         name: yup.string().required(),
         surname: yup.string().required(),
         phoneNumber: yup.string()
+            // .min(9, "Phone number is to short!")
             .matches(PHONE_NUMBER_REGEX, "Phone number is invalid"),
         age: yup.number().required(),
         orderAlcohol: yup.string()

@@ -1,31 +1,27 @@
 import React, {ChangeEvent, ReactElement, useCallback} from "react";
 import {Button, Divider, Grid, MenuItem, TextField} from "@mui/material";
-import {Controller, useFormContext, useWatch} from "react-hook-form";
-import {Alcohol, FieldArrayData, NestedField} from "../useFieldArrayDemoFormSchema";
+import {Controller, useFormContext, useFormState, useWatch} from "react-hook-form";
+import {Alcohol, FieldArrayData} from "../useFieldArrayDemoFormSchema";
+import { ErrorMessage } from "@hookform/error-message";
+import "./style.css";
 
 interface SingleNestedFieldProps {
     index: number
     remove: (value: number) => void
-    update: (index: number, obj: NestedField) => void
 }
 
-const SingleNestedField2 = (
+const SingleNestedField3 = (
     {
         index,
-        remove,
-        update
+        remove
     }: SingleNestedFieldProps): ReactElement => {
 
-    const {control, setValue, getValues} = useFormContext<FieldArrayData>();
+    const {control, setValue, resetField} = useFormContext<FieldArrayData>();
+    const {errors} = useFormState();
 
     const age = useWatch({
         control,
-        name: `nestedField.${index}.age`,
-    })
-
-    const fieldValues = useWatch({
-        control,
-        name: `nestedField.${index}`
+        name: `nestedField.${index}.age`
     })
 
     const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
@@ -37,17 +33,15 @@ const SingleNestedField2 = (
 
     const handleRemoveClick = useCallback(() => {
         remove(index)
-    },[index, remove]);
+    },[index, remove])
 
-    const handleUpdateClick = useCallback(() => {
-        update(index, fieldValues);
-        alert(JSON.stringify(getValues(`nestedField.${index}`)))
-    },[fieldValues, getValues, index, update]);
+    const handleResetClick = useCallback(() => {
+        resetField(`nestedField.${index}.age`);
+    }, [index, resetField]);
 
     return (
         <>
             {index !== 0 && <Divider style={{marginTop: "20px"}}/>}
-            <h2>INDEX: {index}</h2>
             <Grid container spacing={2} style={{marginTop: "5px"}}>
                 <Grid item xs={1}>
                     <Grid container spacing={2}>
@@ -58,15 +52,6 @@ const SingleNestedField2 = (
                                 onClick={handleRemoveClick}
                             >
                                 Remove
-                            </Button>
-                        </Grid>
-                        <Grid item>
-                            <Button
-                                variant="contained"
-                                color="error"
-                                onClick={handleUpdateClick}
-                            >
-                                Update
                             </Button>
                         </Grid>
                     </Grid>
@@ -112,8 +97,23 @@ const SingleNestedField2 = (
                                     error={!!fieldState.error}
                                     color={!!fieldState.error ? "error" : "primary"}
                                     helperText={fieldState.error?.message}
+                                    // helperText={<ErrorMessage
+                                    //     errors={errors}
+                                    //     name={`nestedField.${index}.phoneNumber`}
+                                    //     as="h3"
+                                    // />}
                                 />}
                             />
+                            <ErrorMessage
+                                errors={errors}
+                                name={`nestedField.${index}.phoneNumber`}
+                                as="h3"
+                            />
+                            {/*<ErrorMessage*/}
+                            {/*    errors={errors}*/}
+                            {/*    name={`nestedField.${index}.phoneNumber`}*/}
+                            {/*    render={({ message }) => <p>{message}</p>}*/}
+                            {/*/>*/}
                         </Grid>
                         <Grid item xs={6}>
                             <Controller
@@ -151,10 +151,20 @@ const SingleNestedField2 = (
                                 )}
                             />
                         </Grid>
+                        <Grid item xs={6}>
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                color="error"
+                                onClick={handleResetClick}
+                            >
+                                Reset age field
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
         </>
     );
 };
-export default SingleNestedField2;
+export default SingleNestedField3;

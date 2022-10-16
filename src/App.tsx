@@ -1,12 +1,12 @@
 import React from "react";
-import UseFieldArrayDemo2 from "./Examples/filipDemo/example2/useFieldArrayDemo2";
+import UseFieldArrayDemo3 from "./Examples/filipDemo/example3/useFieldArrayDemo3";
 
 function App() {
   return (
     <div className="App">
-      {/*<ExamplePart1 />*/}
-      {/*  <UseFieldArrayDemo1/>*/}
-        <UseFieldArrayDemo2/>
+      {/*  <UseFieldArrayDemo3/>*/}
+      {/*  <UseFieldArrayDemo2/>*/}
+        <UseFieldArrayDemo3/>
     </div>
   );
 }
