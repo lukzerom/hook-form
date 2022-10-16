@@ -1,25 +1,21 @@
 import * as yup from "yup";
-import {Alcohol} from "./useFieldArrayDemoFormSchema";
 
+const PHONE_NUMBER_REGEX = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+// export const UseFieldArrayValidation: yup.SchemaOf<FieldArrayData> = yup.object({
 export const UseFieldArrayValidation = yup.object({
-    booleanField: yup.boolean(),
-    integerField: yup.number(),
-    stringField: yup.string(),
     nestedField: yup.array(yup.object({
         name: yup.string().required(),
         surname: yup.string().required(),
+        phoneNumber: yup.string()
+            .matches(PHONE_NUMBER_REGEX, "Phone number is invalid"),
         age: yup.number().required(),
-        orderAlcohol: yup.mixed<Alcohol>().oneOf(Object.values(Alcohol))
-            .when("age", {
-                is: ((value: number) => value < 18),
-                then: yup.mixed<Alcohol>().oneOf(Object.values(Alcohol))
-                    .typeError("You can't buy alcohol legally!!!"),
-                otherwise: yup.mixed<Alcohol>().oneOf(Object.values(Alcohol))
-            })
+        orderAlcohol: yup.string()
     })),
-    movieType: yup.array(yup.object({
-        isMovieFan: yup.boolean().required(),
-        movieType: yup.array(yup.string()).required()
-    }))
+    // movieType: yup.array(yup.object({
+    //     isMovieFan: yup.boolean()
+    //         .typeError("Type is not correct")
+    //         .required(),
+    //     movieType: yup.array(yup.string()).required()
+    // }))
 })

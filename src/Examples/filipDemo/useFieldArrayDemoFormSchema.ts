@@ -1,36 +1,37 @@
+export const Alcohol = [
+    "NONE",
+    "VODKA",
+    "GIN",
+    "RUM",
+    "BEER",
+    "WINE",
+]
 
-export enum Alcohol {
-    WODKA="WODKA",
-    GIN="GIN",
-    RUM="RUM",
-    BEER="BEER",
-    WINE="WINE"
-}
-
-export type NestedField = {
+export interface NestedField {
     name: string
     surname: string
     age: number
-    orderAlcohol: Alcohol
+    phoneNumber: string
+    orderAlcohol: ("NONE" | "VODKA" | "GIN" | "RUM" | "BEER" | "WINE")
 }
 
-export type MovieData = {
-    isMovieFan: boolean
-    movieType: string[]
-}
+// export interface MovieData {
+//     isMovieFan: boolean
+//     movieType: string[]
+// }
 
-export type FieldArrayData = {
-    stringField: string
-    booleanField: boolean
-    integerField: number
+export interface FieldArrayData {
     nestedField: NestedField[]
-    movieType: MovieData[]
 }
 
 export const defaultFieldArrayData: FieldArrayData = {
-    stringField: "",
-    booleanField: false,
-    integerField: 0,
     nestedField: [],
-    movieType: []
+}
+
+export const defaultSingleNestedField: NestedField = {
+    name: "",
+    surname: "",
+    phoneNumber: "",
+    age: 0,
+    orderAlcohol: "NONE"
 }
