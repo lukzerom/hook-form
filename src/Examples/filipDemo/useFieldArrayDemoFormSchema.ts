@@ -15,11 +15,6 @@ export interface NestedField {
     orderAlcohol: ("NONE" | "VODKA" | "GIN" | "RUM" | "BEER" | "WINE")
 }
 
-// export interface MovieData {
-//     isMovieFan: boolean
-//     movieType: string[]
-// }
-
 export interface FieldArrayData {
     nestedField: NestedField[]
 }

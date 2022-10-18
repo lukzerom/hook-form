@@ -55,11 +55,13 @@ const SingleNestedField1 = (
                             <Controller
                                 name={`nestedField.${index}.name`}
                                 control={control}
-                                render={({field}) => <TextField
+                                render={({field, fieldState}) => <TextField
                                     {...field}
                                     fullWidth
                                     placeholder="Enter something..."
                                     label="Name"
+                                    error={!!fieldState.error}
+                                    helperText={fieldState?.error?.message}
                                 />}
                             />
                         </Grid>
@@ -67,11 +69,13 @@ const SingleNestedField1 = (
                             <Controller
                                 name={`nestedField.${index}.surname`}
                                 control={control}
-                                render={({field}) => <TextField
+                                render={({field, fieldState}) => <TextField
                                     {...field}
                                     fullWidth
                                     placeholder="Enter something..."
                                     label="Surname"
+                                    error={!!fieldState.error}
+                                    helperText={fieldState?.error?.message}
                                 />}
                             />
                         </Grid>
@@ -95,13 +99,15 @@ const SingleNestedField1 = (
                                 name={`nestedField.${index}.age`}
                                 control={control}
                                 rules={{required: true}}
-                                render={({field}) =>
+                                render={({field, fieldState}) =>
                                     <TextField
                                         {...field}
                                         label="Age"
                                         fullWidth
                                         onChange={handleAgeChange}
                                         inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
+                                        error={!!fieldState.error}
+                                        helperText={fieldState?.error?.message}
                                     />}
                             />
                         </Grid>
@@ -116,7 +122,7 @@ const SingleNestedField1 = (
                                         fullWidth
                                         label="What alcohol you prefer?"
                                         error={!!fieldState.error}
-                                        helperText={!!fieldState?.error?.message}
+                                        helperText={fieldState?.error?.message}
                                         disabled={age < 18}
                                     >
                                         {Alcohol.map((item, idx) =>

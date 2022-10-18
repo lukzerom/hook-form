@@ -5,18 +5,16 @@ const PHONE_NUMBER_REGEX = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|(
 // export const UseFieldArrayValidation: yup.SchemaOf<FieldArrayData> = yup.object({
 export const UseFieldArrayValidation = yup.object({
     nestedField: yup.array(yup.object({
-        name: yup.string().required(),
-        surname: yup.string().required(),
+        name: yup.string().required("This field is required!"),
+        surname: yup.string().required("This field is required!"),
         phoneNumber: yup.string()
-            // .min(9, "Phone number is to short!")
             .matches(PHONE_NUMBER_REGEX, "Phone number is invalid"),
         age: yup.number().required(),
-        orderAlcohol: yup.string(),
+        orderAlcohol: yup.string()
+            .when(["age", "orderAlcohol"], {
+                is: (age: string) => Number(age) >= 18,
+                then: yup.string().required("This field is required!"),
+                otherwise: yup.string(),
+            }),
     })),
-    // movieType: yup.array(yup.object({
-    //     isMovieFan: yup.boolean()
-    //         .typeError("Type is not correct")
-    //         .required(),
-    //     movieType: yup.array(yup.string()).required()
-    // }))
 });

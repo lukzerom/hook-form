@@ -7,6 +7,7 @@ function App() {
             <UseFieldArrayDemo1/>
               {/*<UseFieldArrayDemo2/>*/}
             {/*  <UseFieldArrayDemo3/>*/}
+            {/*<DataExample/>*/}
         </div>
     );
 }
