@@ -11,7 +11,7 @@ export const UseFieldArrayValidation = yup.object({
             // .min(9, "Phone number is to short!")
             .matches(PHONE_NUMBER_REGEX, "Phone number is invalid"),
         age: yup.number().required(),
-        orderAlcohol: yup.string()
+        orderAlcohol: yup.string(),
     })),
     // movieType: yup.array(yup.object({
     //     isMovieFan: yup.boolean()
@@ -19,4 +19,4 @@ export const UseFieldArrayValidation = yup.object({
     //         .required(),
     //     movieType: yup.array(yup.string()).required()
     // }))
-})
+});

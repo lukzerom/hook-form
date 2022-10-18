@@ -13,7 +13,7 @@ interface SingleNestedFieldProps {
 const SingleNestedField3 = (
     {
         index,
-        remove
+        remove,
     }: SingleNestedFieldProps): ReactElement => {
 
     const {control, setValue, resetField} = useFormContext<FieldArrayData>();
@@ -21,8 +21,8 @@ const SingleNestedField3 = (
 
     const age = useWatch({
         control,
-        name: `nestedField.${index}.age`
-    })
+        name: `nestedField.${index}.age`,
+    });
 
     const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         setValue(`nestedField.${index}.age`, Number(event.target.value));
@@ -32,8 +32,8 @@ const SingleNestedField3 = (
     }, [index, setValue]);
 
     const handleRemoveClick = useCallback(() => {
-        remove(index)
-    },[index, remove])
+        remove(index);
+    }, [index, remove]);
 
     const handleResetClick = useCallback(() => {
         resetField(`nestedField.${index}.age`);
@@ -95,7 +95,7 @@ const SingleNestedField3 = (
                                     id="outlined-required"
                                     label="Phone Number"
                                     error={!!fieldState.error}
-                                    color={!!fieldState.error ? "error" : "primary"}
+                                    color={fieldState.error ? "error" : "primary"}
                                     helperText={fieldState.error?.message}
                                     // helperText={<ErrorMessage
                                     //     errors={errors}

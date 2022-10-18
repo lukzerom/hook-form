@@ -11,7 +11,7 @@ interface SingleNestedFieldProps {
 const SingleNestedField1 = (
     {
         index,
-        remove
+        remove,
     }: SingleNestedFieldProps): ReactElement => {
 
     const {control, setValue} = useFormContext<FieldArrayData>();
@@ -29,7 +29,7 @@ const SingleNestedField1 = (
     }, [index, setValue]);
 
     const handleRemoveClick = useCallback(() => {
-        remove(index)
+        remove(index);
     },[index, remove]);
 
     return (
@@ -59,7 +59,6 @@ const SingleNestedField1 = (
                                     {...field}
                                     fullWidth
                                     placeholder="Enter something..."
-                                    id="outlined-required"
                                     label="Name"
                                 />}
                             />
@@ -72,7 +71,6 @@ const SingleNestedField1 = (
                                     {...field}
                                     fullWidth
                                     placeholder="Enter something..."
-                                    id="outlined-required"
                                     label="Surname"
                                 />}
                             />
@@ -85,10 +83,9 @@ const SingleNestedField1 = (
                                     {...field}
                                     fullWidth
                                     placeholder="Enter something..."
-                                    id="outlined-required"
                                     label="Phone Number"
                                     error={!!fieldState.error}
-                                    color={!!fieldState.error ? "error" : "primary"}
+                                    color={fieldState.error ? "error" : "primary"}
                                     helperText={fieldState.error?.message}
                                 />}
                             />
@@ -117,7 +114,7 @@ const SingleNestedField1 = (
                                         {...field}
                                         select
                                         fullWidth
-                                        label="Select"
+                                        label="What alcohol you prefer?"
                                         error={!!fieldState.error}
                                         helperText={!!fieldState?.error?.message}
                                         disabled={age < 18}

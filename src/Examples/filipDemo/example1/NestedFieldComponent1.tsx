@@ -12,10 +12,10 @@ const NestedFieldComponent1 = (): ReactElement => {
         fields: nestedFieldArray,
         append: appendNestedField,
         prepend: prependNestedField,
-        remove: removeNestedField
+        remove: removeNestedField,
     } = useFieldArray({
         control,
-        name: "nestedField"
+        name: "nestedField",
     });
 
     return (

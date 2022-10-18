@@ -13,7 +13,7 @@ const SingleNestedField2 = (
     {
         index,
         remove,
-        update
+        update,
     }: SingleNestedFieldProps): ReactElement => {
 
     const {control, setValue, getValues} = useFormContext<FieldArrayData>();
@@ -21,12 +21,12 @@ const SingleNestedField2 = (
     const age = useWatch({
         control,
         name: `nestedField.${index}.age`,
-    })
+    });
 
     const fieldValues = useWatch({
         control,
-        name: `nestedField.${index}`
-    })
+        name: `nestedField.${index}`,
+    });
 
     const handleAgeChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         setValue(`nestedField.${index}.age`, Number(event.target.value));
@@ -36,12 +36,12 @@ const SingleNestedField2 = (
     }, [index, setValue]);
 
     const handleRemoveClick = useCallback(() => {
-        remove(index)
+        remove(index);
     },[index, remove]);
 
     const handleUpdateClick = useCallback(() => {
         update(index, fieldValues);
-        alert(JSON.stringify(getValues(`nestedField.${index}`)))
+        alert(JSON.stringify(getValues(`nestedField.${index}`)));
     },[fieldValues, getValues, index, update]);
 
     return (
@@ -110,7 +110,7 @@ const SingleNestedField2 = (
                                     id="outlined-required"
                                     label="Phone Number"
                                     error={!!fieldState.error}
-                                    color={!!fieldState.error ? "error" : "primary"}
+                                    color={fieldState.error ? "error" : "primary"}
                                     helperText={fieldState.error?.message}
                                 />}
                             />
@@ -139,7 +139,7 @@ const SingleNestedField2 = (
                                         {...field}
                                         select
                                         fullWidth
-                                        label="Select"
+                                        label="What alcohol you prefer?"
                                         error={!!fieldState.error}
                                         helperText={!!fieldState?.error?.message}
                                         disabled={age < 18}

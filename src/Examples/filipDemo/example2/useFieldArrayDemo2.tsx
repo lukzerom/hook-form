@@ -14,18 +14,18 @@ const UseFieldArrayDemo2 = (): ReactElement => {
         surname: "Nope",
         phoneNumber: "123-123-321".trim(),
         age: 22,
-        orderAlcohol: "RUM"
+        orderAlcohol: "RUM",
     };
 
     const form = useForm<FieldArrayData>({
         defaultValues: {nestedField: [initialValues]},
         mode: "onChange",
-        resolver: yupResolver(UseFieldArrayValidation)
-    })
+        resolver: yupResolver(UseFieldArrayValidation),
+    });
 
     const onSubmit = useCallback((data: FieldArrayData) => {
         console.log(data);
-    }, [])
+    }, []);
 
     return (
         <>
@@ -53,5 +53,5 @@ const UseFieldArrayDemo2 = (): ReactElement => {
             <DevTool control={form.control}/>
         </>
     );
-}
+};
 export default UseFieldArrayDemo2;

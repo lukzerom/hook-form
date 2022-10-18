@@ -15,10 +15,10 @@ const NestedFieldComponent2 = (): ReactElement => {
         replace: replaceField,
         swap: swapFields,
         insert: insertNestedField,
-        remove: removeNestedField
+        remove: removeNestedField,
     } = useFieldArray({
         control,
-        name: "nestedField"
+        name: "nestedField",
     });
 
     const [fromIndex, setFromIndex] = useState<number>(0);
@@ -32,35 +32,35 @@ const NestedFieldComponent2 = (): ReactElement => {
                 surname: "Replaced1",
                 phoneNumber: "999-999-999".trim(),
                 age: 99,
-                orderAlcohol: "NONE"
+                orderAlcohol: "NONE",
             },
             {
                 name: " Replaced2",
                 surname: "Replaced2",
                 phoneNumber: "999-999-999".trim(),
                 age: 99,
-                orderAlcohol: "NONE"
+                orderAlcohol: "NONE",
             },
             {
                 name: " Replaced3",
                 surname: "Replaced3",
                 phoneNumber: "999-999-999".trim(),
                 age: 99,
-                orderAlcohol: "NONE"
-            }
+                orderAlcohol: "NONE",
+            },
         ];
     }, []);
 
     const handleAppendCLick = useCallback(() => appendNestedField(defaultSingleNestedField), [appendNestedField]);
-    const handleReplaceClick = useCallback(() => replaceField(replacedArray), [replaceField, replacedArray])
-    const handleSwapClick = useCallback(() => swapFields(fromIndex, toIndex), [fromIndex, swapFields, toIndex])
+    const handleReplaceClick = useCallback(() => replaceField(replacedArray), [replaceField, replacedArray]);
+    const handleSwapClick = useCallback(() => swapFields(fromIndex, toIndex), [fromIndex, swapFields, toIndex]);
     const handleInsertClick = useCallback(() => insertNestedField(toIndexInsert, {
         name: "Inserted",
         surname: "Inserted",
         phoneNumber: "123-456-777".trim(),
         age: 20,
-        orderAlcohol: "GIN"
-    },), [insertNestedField, toIndexInsert])
+        orderAlcohol: "GIN",
+    }), [insertNestedField, toIndexInsert]);
 
     return (
         <Grid container spacing={3}>
@@ -101,7 +101,7 @@ const NestedFieldComponent2 = (): ReactElement => {
                             inputProps={{
                                 inputMode: 'numeric',
                                 pattern: '[0-9]*',
-                                inputProps: {min: 0, max: nestedFieldArray.length - 1}
+                                inputProps: {min: 0, max: nestedFieldArray.length - 1},
                             }}
                         />
                     </Grid>
@@ -113,7 +113,7 @@ const NestedFieldComponent2 = (): ReactElement => {
                             inputProps={{
                                 inputMode: 'numeric',
                                 pattern: '[0-9]*',
-                                inputProps: {min: 0, max: nestedFieldArray.length - 1}
+                                inputProps: {min: 0, max: nestedFieldArray.length - 1},
                             }}
                         />
                     </Grid>
@@ -140,7 +140,7 @@ const NestedFieldComponent2 = (): ReactElement => {
                             inputProps={{
                                 inputMode: 'numeric',
                                 pattern: '[0-9]*',
-                                inputProps: {min: 0, max: nestedFieldArray.length - 1}
+                                inputProps: {min: 0, max: nestedFieldArray.length - 1},
                             }}
                         />
                     </Grid>

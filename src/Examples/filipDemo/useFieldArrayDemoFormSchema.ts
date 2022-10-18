@@ -5,7 +5,7 @@ export const Alcohol = [
     "RUM",
     "BEER",
     "WINE",
-]
+];
 
 export interface NestedField {
     name: string
@@ -26,12 +26,12 @@ export interface FieldArrayData {
 
 export const defaultFieldArrayData: FieldArrayData = {
     nestedField: [],
-}
+};
 
 export const defaultSingleNestedField: NestedField = {
     name: "",
     surname: "",
     phoneNumber: "",
     age: 1,
-    orderAlcohol: "NONE"
-}
+    orderAlcohol: "NONE",
+};

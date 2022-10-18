@@ -12,12 +12,12 @@ const UseFieldArrayDemo1 = (): ReactElement => {
     const form = useForm<FieldArrayData>({
         defaultValues: defaultFieldArrayData,
         mode: "onChange",
-        resolver: yupResolver(UseFieldArrayValidation)
-    })
+        resolver: yupResolver(UseFieldArrayValidation),
+    });
 
     const onSubmit = useCallback((data: FieldArrayData) => {
         console.log(data);
-    }, [])
+    }, []);
 
     return (
         <>
@@ -45,5 +45,5 @@ const UseFieldArrayDemo1 = (): ReactElement => {
             <DevTool control={form.control}/>
         </>
     );
-}
+};
 export default UseFieldArrayDemo1;
