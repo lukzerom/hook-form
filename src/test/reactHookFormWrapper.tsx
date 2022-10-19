@@ -1,13 +1,13 @@
-import {DeepPartial, useForm, FormProvider, SubmitHandler, FieldValues} from "react-hook-form";
+import {DeepPartial, FieldValues, FormProvider, useForm} from "react-hook-form";
 import {ReactElement} from "react";
 
-interface WrapperProps<T extends FieldValues> {
+interface WrapperProps<T> {
     defaultValues?: DeepPartial<T>
-    onSubmit?:  SubmitHandler<T>
+    onSubmit?: (data: T, event: React.BaseSyntheticEvent) => void
     children: JSX.Element
 }
 
-const ReactHookFormWrapper = ({defaultValues, onSubmit, children}: WrapperProps<any>): ReactElement => {
+const ReactHookFormWrapper = <T extends FieldValues>({defaultValues, onSubmit, children}: WrapperProps<T>): ReactElement => {
     const form = useForm({
         defaultValues: defaultValues,
         mode: "onChange",

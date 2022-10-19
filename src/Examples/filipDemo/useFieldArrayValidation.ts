@@ -11,7 +11,7 @@ export const UseFieldArrayValidation = yup.object({
             .matches(PHONE_NUMBER_REGEX, "Phone number is invalid"),
         age: yup.number().required(),
         orderAlcohol: yup.string()
-            .when(["age", "orderAlcohol"], {
+            .when("age", {
                 is: (age: string) => Number(age) >= 18,
                 then: yup.string().required("This field is required!"),
                 otherwise: yup.string(),
